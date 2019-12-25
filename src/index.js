@@ -1,19 +1,8 @@
 const { VK } = require('vk-io')
-const { Executor, Command } = require('@alexthvest/commands')
 const config = require('./config')
-
-class HelloCommand extends Command {
-  patterns = ['hello']
-  
-  execute(args, ctx) {
-    ctx.send('Hello!')
-  }
-}
+const executor = require('./executor')
 
 const vk = new VK({ token: config.TOKEN })
-const executor = new Executor({
-  commands: [new HelloCommand()]
-})
 
 vk.updates.on('message', async (ctx, next) => {
   if (!ctx.text) return next()
