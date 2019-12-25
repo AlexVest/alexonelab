@@ -2,7 +2,6 @@ const { Executor } = require('@alexthvest/commands')
 
 // Commands imports
 const ProbabilityCommand = require('./commands/probability.command')
-const RandomImageCommand = require('./commands/randomImage.command')
 const RandomTextCommand = require('./commands/randomText.command')
 const HtmlCompilerCommand = require('./commands/htmlCompiler.command')
 
@@ -12,7 +11,6 @@ const restMiddleware = require('./middleware/rest.middleware')
 const executor = new Executor({
   commands: [
     new ProbabilityCommand(),
-    new RandomImageCommand(),
     new RandomTextCommand(),
     new HtmlCompilerCommand()
   ]
