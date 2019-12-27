@@ -1,5 +1,6 @@
 const { Converter } = require('@alexthvest/commands')
 const User = require('../models/user.model')
+const UserService = require('../services/user.service')
 
 module.exports = class UserConverter extends Converter {
   type = User
@@ -10,7 +11,7 @@ module.exports = class UserConverter extends Converter {
    * @returns {number | null}
    */
   _getIdFromMention(value) {
-    const match = value.match(/\[id(.*)\|.*\]/)
+    const match = value.match(/\[id(.*)\|.*]/)
     return match ? match[1] : null
   }
   
@@ -37,7 +38,6 @@ module.exports = class UserConverter extends Converter {
    * 
    * @param {string} value 
    * @param {*} ctx
-   * @returns {ConverterResult}
    */
   async convert(value, ctx) {
     const response = {
@@ -48,7 +48,7 @@ module.exports = class UserConverter extends Converter {
     const userId = await this._tryGetId(value, ctx)
     if (!userId) return response
     
-    response.value = await User.findById(userId)
+    response.value = await UserService.getById(userId)
     if (response.value) response.error = null
 
     return response
