@@ -7,7 +7,6 @@ const UserConverter = require('./converters/user.converter')
 const ProbabilityCommand = require('./commands/probability.command')
 const RandomTextCommand = require('./commands/randomText.command')
 const HtmlCompilerCommand = require('./commands/htmlCompiler.command')
-
 const BalanceCommand = require('./commands/balance.command')
 
 // Middleware imports

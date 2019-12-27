@@ -36,7 +36,8 @@ module.exports = class UserConverter extends Converter {
   /**
    * 
    * @param {string} value 
-   * @param {*} ctx 
+   * @param {*} ctx
+   * @returns {ConverterResult}
    */
   async convert(value, ctx) {
     const response = {
