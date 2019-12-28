@@ -5,6 +5,10 @@ const schema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  role: {
+    type: String,
+    default: 'user'
+  },
   money: {
     type: Number,
     default: 500

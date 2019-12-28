@@ -14,7 +14,7 @@ module.exports = class UserConverter extends Converter {
     const match = value.match(/\[id(.*)\|.*]/)
     return match ? match[1] : null
   }
-  
+
   /**
    *
    * @param {string} value
@@ -24,13 +24,13 @@ module.exports = class UserConverter extends Converter {
   async _tryGetId(value, ctx) {
     const numberId = parseInt(value)
     if (numberId) return numberId
-    
+
     const mentionId = this._getIdFromMention(value)
     if (mentionId) return mentionId
-  
+
     const users = await ctx.vk.api.users.get({ user_ids: value })
     if (users.length) return users[0].id
-    
+
     return null
   }
 
@@ -47,7 +47,7 @@ module.exports = class UserConverter extends Converter {
 
     const userId = await this._tryGetId(value, ctx)
     if (!userId) return response
-    
+
     response.value = await UserService.getById(userId)
     if (response.value) response.error = null
 

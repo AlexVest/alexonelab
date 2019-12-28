@@ -1,7 +1,7 @@
 const User = require('../models/user.model')
 
 class UserService {
-  
+
   /**
    * Adds user to db
    * @param {number} userId
@@ -12,7 +12,7 @@ class UserService {
     const user = new User({ _id: userId, ...params })
     return user.save()
   }
-  
+
   /**
    * Gets user by id
    * @param {number} userId
@@ -21,7 +21,7 @@ class UserService {
   async getById(userId) {
     return User.findById(userId)
   }
-  
+
   /**
    * Gets user and creates him if not exists
    * @param {number} userId
